@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin "daisyui" {
+    themes: business;
+    exclude: rootscrollgutter;
+
+}
+
+:global(.carta-font-code) {
+    font-family: '...', monospace;
+    font-size: 1.1rem;
+    line-height: 1.1rem;
+    letter-spacing: normal;
+}
