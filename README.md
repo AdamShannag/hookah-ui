@@ -28,6 +28,17 @@ Planned features:
 - Save current flow as a file
 - Ability to load previously saved flows from a file
 
+Screenshots
+------
+
+### Flow
+
+![flow.png](images/flow.png)
+
+### Data
+
+![data.png](images/data.png)
+
 Getting Started
 ------
 
