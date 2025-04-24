@@ -23,7 +23,7 @@
 
 </script>
 
-<div class="card node-card w-72 relative transition-all duration-100 ease-in-out
+<div class="card node-card min-w-72 h-full relative transition-all duration-100 ease-in-out
             border border-base-300 shadow-sm hover:shadow-md hover:border-primary
             bg-base-100">
     <div class="bg-base-200 px-4 py-3 text-center border-b border-base-300">

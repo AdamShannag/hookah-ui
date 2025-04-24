@@ -6,16 +6,17 @@
 </script>
 
 <script lang="ts">
-    import {type Node, type NodeProps} from '@xyflow/svelte';
+    import {type Node, type NodeProps, NodeResizer} from '@xyflow/svelte';
     import {NodeShell} from "$components";
 
-    let {data}: NodeProps<Node<{ templateNodeState: TemplateNodeState }>> = $props();
+    let {data, selected}: NodeProps<Node<{ templateNodeState: TemplateNodeState }>> = $props();
 </script>
 
+<NodeResizer minWidth={290} minHeight={210} isVisible={selected}/>
 
 <NodeShell title="Template" target={true}>
-    <input class="nodrag input" bind:value={data.templateNodeState.name}
+    <input class="nodrag input w-full" bind:value={data.templateNodeState.name}
            placeholder="template.tmpl"/>
-    <textarea class="textarea nodrag" placeholder="request body"
+    <textarea class="textarea nodrag w-full h-full" placeholder="request body"
               bind:value={data.templateNodeState.content}></textarea>
 </NodeShell>
