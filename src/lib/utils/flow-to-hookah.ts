@@ -53,7 +53,7 @@ const buildAdjacencyMap = (edges: Edge[]): Map<string, Set<string>> => {
 const buildConfigWithGraph = (nodes: Node[], edges: Edge[]): Config => {
     const config: Config = {
         receiver: '',
-        auth: {flow: '', header_secret_key: '', secret: ''},
+        auth: {flow: 'none'},
         event_type_in: '',
         event_type_key: '',
         events: [],

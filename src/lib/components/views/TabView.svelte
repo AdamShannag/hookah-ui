@@ -12,7 +12,7 @@
 </script>
 
 
-<div role="tablist" class="tabs tabs-box fixed z-50 top-5 left-1/2 transform -translate-x-1/2">
+<div role="tablist" class="tabs tabs-box fixed z-50 top-5 left-1/2 transform -translate-x-1/2 bg-base-300">
     <button role="tab" class="tab" onclick={()=> activeTab= 0}
             class:tab-active={activeTab===0}>Flow
     </button>

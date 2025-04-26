@@ -8,12 +8,12 @@ export interface Config {
 
 export interface Auth {
     flow: string
-    header_secret_key: string
-    secret: string
+    header_secret_key?: string
+    secret?: string
 }
 
 export interface Event {
-    event: string
+    event?: string
     conditions: string[]
     hooks: Hook[]
 }
