@@ -36,7 +36,7 @@ Screenshots
 
 ### Data
 
-![data.png](images/data.png)
+![data.png](images/data-v2.png)
 
 Getting Started
 ------
