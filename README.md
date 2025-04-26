@@ -23,7 +23,6 @@ Roadmap
 Planned features:
 
 - Provide ready templates for popular webhooks (discord, slack, etc...)
-- File download support (config.json, templates)
 - Bundle all files into a single downloadable ZIP
 - Save current flow as a file
 - Ability to load previously saved flows from a file
