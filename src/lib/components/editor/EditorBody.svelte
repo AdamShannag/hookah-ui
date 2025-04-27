@@ -4,7 +4,7 @@
     import {copyToClipboard} from "$lib/utils/copy-to-clipboard";
     import {Clipboard, Download} from "@lucide/svelte";
     import {CodeView, DnDProvider, Flow} from "$components";
-    import {SvelteFlowProvider} from "@xyflow/svelte";
+    import {type Edge, type Node, SvelteFlowProvider} from "@xyflow/svelte";
 
     type EditorBodyProps = {
         current: FileNode
@@ -12,6 +12,11 @@
     }
 
     let {current, currentContent}: EditorBodyProps = $props()
+    let flow: Flow
+
+    export function updateFlow(nodes: Node[], edges: Edge[]) {
+        flow.updateFLow(nodes, edges)
+    }
 </script>
 
 <main class="flex-1 p-6" class:hidden={current.type === "flow"}>
@@ -34,7 +39,7 @@
     <div class="rounded-lg shadow-lg h-full">
         <SvelteFlowProvider>
             <DnDProvider>
-                <Flow/>
+                <Flow bind:this={flow}/>
             </DnDProvider>
         </SvelteFlowProvider>
     </div>
