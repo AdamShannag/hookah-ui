@@ -30,9 +30,12 @@
 {:else}
     <li>
         <button onclick={()=>onclick(node)} class:bg-base-200={node.name===current.name}>
-            <node.icon size={18}/>
+            {#if node.icon}
+                {@const Icon = node.icon}
+                <Icon size={18}/>
+            {/if}
             {#if !node.name}
-                unnamed.tmpl
+                unnamed
             {/if}
             {node.name}
         </button>

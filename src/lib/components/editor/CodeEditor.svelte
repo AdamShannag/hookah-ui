@@ -11,29 +11,29 @@
     let current: FileNode = $state({name: "config.flow", type: "flow"})
 
     let fileTree = $derived.by(() => {
-        const templates = flowState.getTemplates()
-        const children = templates.map(tmpl => {
-            return {
-                name: tmpl.name,
-                type: "file",
-                content: tmpl.content,
-                icon: File
-            } as FileNode
-        })
-        const config: FileNode = {
-            name: "config.json",
+        const templates = flowState.getTemplates().map(tmpl => ({
+            name: tmpl.name,
             type: "file",
-            content: JSON.stringify(configs, null, 2),
-            icon: FileJson2
+            content: tmpl.content,
+            icon: File
+        } as FileNode));
+
+        const nodes: FileNode[] = [
+            {name: "templates", type: "folder", children: templates},
+            {name: "config.flow", type: "flow", icon: Workflow}
+        ];
+
+        if (configs.length > 0) {
+            nodes.splice(1, 0, {
+                name: "config.json",
+                type: "file",
+                content: JSON.stringify(configs, null, 2),
+                icon: FileJson2
+            });
         }
 
-        return [
-            {name: "templates", type: "folder", children},
-            config,
-            {name: "config.flow", type: "flow", icon: Workflow}
-        ] as FileNode[]
+        return nodes;
     })
-
 
     const onclick = (node: FileNode) => {
         current = node
