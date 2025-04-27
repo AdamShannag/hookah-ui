@@ -17,7 +17,7 @@
 
     import {useDnD} from '$components/flow/DnDProvider.svelte';
     import {getFlowState} from "$lib/state/flow-state.svelte.js";
-    import {nodeStateFactory, validConnections} from "$lib/components/flow/flow";
+    import {createFilledNodeState, nodeStateFactory, validConnections} from "$lib/components/flow/flow";
 
     import {
         AuthNode,
@@ -167,6 +167,15 @@
         menu = null;
         edgeMenu = null;
     }
+
+    export function updateFLow(n: Node[], r: Edge[]) {
+        n.forEach((node) => {
+            node.data = createFilledNodeState(node.type || "", node.data)
+        })
+        nodes = n
+        edges = r
+    }
+
 </script>
 
 <div class="h-full" bind:clientWidth bind:clientHeight>

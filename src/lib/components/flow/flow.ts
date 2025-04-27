@@ -31,7 +31,7 @@ export function createFilledNodeState(type: string, data: any): any {
             state.name = d.name ?? '';
             state.event_type_in = d.event_type_in ?? 'body';
             state.event_type_key = d.event_type_key ?? 'event_type';
-            return { receiverNodeState: state };
+            return {receiverNodeState: state};
         }
         case "authBlock": {
             const state = new AuthNodeState();
@@ -39,7 +39,7 @@ export function createFilledNodeState(type: string, data: any): any {
             state.flow = d.flow ?? 'none';
             state.header_secret_key = d.header_secret_key;
             state.secret = d.secret;
-            return { authNodeState: state };
+            return {authNodeState: state};
         }
         case "conditionsBlock": {
             const state = new ConditionsNodeState();
@@ -52,13 +52,13 @@ export function createFilledNodeState(type: string, data: any): any {
                     right: item.right ?? '',
                 }))
                 : [];
-            return { conditionsNodeState: state };
+            return {conditionsNodeState: state};
         }
         case "eventBlock": {
             const state = new EventNodeState();
             const d = data.eventNodeState || {};
             state.event = d.event ?? '';
-            return { eventNodeState: state };
+            return {eventNodeState: state};
         }
         case "hookBlock": {
             const state = new HookNodeState();
@@ -66,14 +66,83 @@ export function createFilledNodeState(type: string, data: any): any {
             state.name = d.name ?? '';
             state.endpoint_key = d.endpoint_key ?? '';
             state.body = d.body ?? '';
-            return { hookNodeState: state };
+            return {hookNodeState: state};
         }
         case "templateBlock": {
             const state = new TemplateNodeState();
             const d = data.templateNodeState || {};
             state.name = d.name ?? '';
             state.content = d.content ?? '';
-            return { templateNodeState: state };
+            return {templateNodeState: state};
+        }
+        default:
+            throw new Error(`Unknown block type: ${type}`);
+    }
+}
+
+export function toFilledNodeData(type: string, data: any): any {
+    switch (type) {
+        case "receiverBlock": {
+            const d = data.receiverNodeState || {};
+            return {
+                receiverNodeState: {
+                    name: d.name ?? '',
+                    event_type_in: d.event_type_in ?? 'body',
+                    event_type_key: d.event_type_key ?? 'event_type',
+                }
+            };
+        }
+        case "authBlock": {
+            const d = data.authNodeState || {};
+            return {
+                authNodeState: {
+                    flow: d.flow ?? 'none',
+                    header_secret_key: d.header_secret_key,
+                    secret: d.secret,
+                }
+            };
+        }
+        case "conditionsBlock": {
+            const d = data.conditionsNodeState || {};
+            return {
+                conditionsNodeState: {
+                    conditions: Array.isArray(d.conditions)
+                        ? d.conditions.map((item: any) => ({
+                            id: item.id ?? crypto.randomUUID(),
+                            operator: item.operator ?? 'eq',
+                            left: item.left ?? '',
+                            right: item.right ?? '',
+                        }))
+                        : [],
+                }
+            };
+        }
+        case "eventBlock": {
+            const d = data.eventNodeState || {};
+            return {
+                eventNodeState: {
+                    event: d.event ?? '',
+                }
+            };
+        }
+        case "hookBlock": {
+            const d = data.hookNodeState || {};
+            return {
+                hookNodeState: {
+                    name: d.name ?? '',
+                    endpoint_key: d.endpoint_key ?? '',
+                    body: d.body ?? '',
+                }
+            };
+        }
+        case "templateBlock": {
+            const d = data.templateNodeState || {};
+            return {
+                templateNodeState: {
+                    name: d.name ?? '',
+                    content: d.content ?? '',
+                }
+            };
         }
         default:
             throw new Error(`Unknown block type: ${type}`);

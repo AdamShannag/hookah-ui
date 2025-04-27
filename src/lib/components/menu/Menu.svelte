@@ -3,7 +3,7 @@
     import {MenuItem} from "$components";
 </script>
 
-<ul class="menu bg-base-200 lg:menu-horizontal rounded-box fixed z-50 top-10 left-1/2 transform -translate-x-1/2 gap-4">
+<ul class="menu bg-base-200 lg:menu-horizontal rounded-box fixed z-50 top-10 left-[55%] transform -translate-x-1/2 gap-4">
     <MenuItem nodeType="receiverBlock">
         <Cuboid/>
         Receiver
