@@ -32,11 +32,17 @@ Screenshots
 
 ### Flow
 
-![flow.png](images/flow.png)
+![flow.png](images/flow-v2.png)
 
 ### Data
 
-![data.png](images/data-v2.png)
+#### config.json
+
+![config.png](images/config.png)
+
+#### template.tmpl
+
+![template.png](images/template.png)
 
 Getting Started
 ------

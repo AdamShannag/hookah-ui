@@ -1,12 +1,12 @@
 <script lang="ts">
     import {TreeNode} from "$components"
-    import {File, Folder} from '@lucide/svelte';
+    import {Folder} from '@lucide/svelte';
     import type {FileNode} from "$lib/types/file-node";
 
     type TreeNodeProps = {
         node: FileNode
-        current: string
-        onclick: (name: string) => void
+        current: FileNode
+        onclick: (node: FileNode) => void
     }
 
     let {node, onclick, current}: TreeNodeProps = $props();
@@ -29,8 +29,11 @@
     {/if}
 {:else}
     <li>
-        <button onclick={()=>onclick(node.name)} class:bg-base-200={node.name===current}>
-            <File size={18}/>
+        <button onclick={()=>onclick(node)} class:bg-base-200={node.name===current.name}>
+            <node.icon size={18}/>
+            {#if !node.name}
+                unnamed.tmpl
+            {/if}
             {node.name}
         </button>
     </li>
