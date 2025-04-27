@@ -131,10 +131,10 @@
         menu = {
             id: node.id,
             type: node.type || "Unknown Node",
-            top: event.clientY < clientHeight - 200 ? event.clientY : undefined,
-            left: event.clientX < clientWidth - 200 ? event.clientX : undefined,
+            top: event.clientY < clientHeight - 220 ? event.clientY - 20 : undefined,
+            left: event.clientX < clientWidth - 200 ? event.clientX - 280 : undefined,
             right:
-                event.clientX >= clientWidth - 200
+                event.clientX >= clientWidth + 300
                     ? clientWidth - event.clientX
                     : undefined,
             bottom:
@@ -150,10 +150,10 @@
 
         edgeMenu = {
             id: edge.id,
-            top: event.clientY < clientHeight - 200 ? event.clientY : undefined,
-            left: event.clientX < clientWidth - 200 ? event.clientX : undefined,
+            top: event.clientY < clientHeight - 220 ? event.clientY - 20 : undefined,
+            left: event.clientX < clientWidth - 200 ? event.clientX - 280 : undefined,
             right:
-                event.clientX >= clientWidth - 200
+                event.clientX >= clientWidth + 300
                     ? clientWidth - event.clientX
                     : undefined,
             bottom:
@@ -169,7 +169,7 @@
     }
 </script>
 
-<div style="height:100vh;" bind:clientWidth bind:clientHeight>
+<div class="h-full" bind:clientWidth bind:clientHeight>
     <Menu/>
     <SvelteFlow bind:nodes
                 bind:edges
